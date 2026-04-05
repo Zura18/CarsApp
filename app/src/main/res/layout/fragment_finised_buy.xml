@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".finised_buy">
+    android:background="@android:color/white"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,8 +31,10 @@
             android:textSize="18sp" />
 
         <Button
+            android:id="@+id/btnGoHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:backgroundTint="#CCC9C9"
             android:text="Go To First Page"
             android:textColor="#0006C0" />

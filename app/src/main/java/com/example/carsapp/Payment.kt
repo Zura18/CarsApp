@@ -63,7 +63,7 @@ class Payment : Fragment() {
         }
 
         binding.btnPay.setOnClickListener {
-            // გადახდის ლოგიკა
+            openSuccessFragment()
         }
     }
 
@@ -71,22 +71,30 @@ class Payment : Fragment() {
      * ფუნქცია, რომელიც ითვლის საბოლოო ფასს ყველა პირობის გათვალისწინებით
      */
     private fun updateTotal() {
-        // 1. ვიღებთ მანქანის სუფთა ფასს (მაგ: 100,000)
         var carValue = baseCarPrice.toDouble()
 
-        // 2. თუ ფასდაკლება ჩართულია, ვაკლებთ 5%-ს მხოლოდ მანქანის ფასს
-        // 100,000 * 0.05 = 5,000 -> 100,000 - 5,000 = 95,000
         if (binding.discountCheckBox.isChecked) {
             carValue -= (carValue * 0.05)
         }
 
-        // 3. ვიღებთ მიწოდების ფასს (ცალკე ცვლადად)
         val shippingCost = if (binding.rbExpress.isChecked) 1700.0 else 0.0
 
-        // 4. საბოლოო ჯამი არის (ფასდაკლებული მანქანა) + (მიწოდება)
         val finalTotal = carValue + shippingCost
 
         binding.totalPriceText.text = "$${finalTotal.toInt()}"
+    }
+
+    /**
+     * 👉 ახალი Fragment-ზე გადასვლა (სრული შეცვლა, ძველი არ ჩანს)
+     */
+    private fun openSuccessFragment() {
+        val fragment = SuccessFragment() // შექმენი ეს Fragment
+
+        parentFragmentManager.beginTransaction()
+            .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+            .replace(R.id.fragment_container, fragment) // მთლიანად ცვლის
+            .addToBackStack(null) // თუ გინდა უკან დაბრუნება
+            .commit()
     }
 
     override fun onDestroyView() {

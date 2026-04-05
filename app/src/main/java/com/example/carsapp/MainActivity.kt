@@ -2,6 +2,7 @@ package com.example.carsapp
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.example.carsapp.databinding.ActivityMainBinding
 
@@ -13,6 +14,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 🔙 Back ღილაკის კონტროლი
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (supportFragmentManager.backStackEntryCount > 0) {
+                    supportFragmentManager.popBackStack()
+                    binding.fragmentContainer.visibility = View.GONE
+                } else {
+                    finish()
+                }
+            }
+        })
 
         // მანქანების სია, რომლებზეც კლიკი უნდა მუშაობდეს
         val carViews = listOf(
@@ -61,12 +74,5 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.fragment_container, fragment)
             .addToBackStack(null) // საშუალებას გვაძლევს "Back" ღილაკით დავბრუნდეთ სიაში
             .commit()
-
-        // როდესაც უკან დავბრუნდებით, კონტეინერი ისევ უნდა დავმალოთ
-        supportFragmentManager.addOnBackStackChangedListener {
-            if (supportFragmentManager.backStackEntryCount == 0) {
-                binding.fragmentContainer.visibility = View.GONE
-            }
-        }
     }
 }
