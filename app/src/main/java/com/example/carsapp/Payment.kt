@@ -22,6 +22,7 @@ class Payment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -74,7 +75,7 @@ class Payment : Fragment() {
         var carValue = baseCarPrice.toDouble()
 
         if (binding.discountCheckBox.isChecked) {
-            carValue -= (carValue * 0.05)
+            carValue -= (carValue * 0.05)//აქ სპეციალურად მხოლოდ მანქანის ფასზე გავაკეთე დისქაუნთის ლოგიკა, აითემის გაყოლებაზე რაკი ეწერა
         }
 
         val shippingCost = if (binding.rbExpress.isChecked) 1700.0 else 0.0
@@ -85,7 +86,7 @@ class Payment : Fragment() {
     }
 
     /**
-     * 👉 ახალი Fragment-ზე გადასვლა (სრული შეცვლა, ძველი არ ჩანს)
+     *  ახალ Fragment-ზე გადასვლა
      */
     private fun openSuccessFragment() {
         val fragment = SuccessFragment() // შექმენი ეს Fragment

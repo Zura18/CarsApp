@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 🔙 Back ღილაკის კონტროლი
+        // Back ღილაკის კონტროლი
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 if (supportFragmentManager.backStackEntryCount > 0) {
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openPaymentFragment(imageRes: Int, title: String, price: String) {
-        // 1. გამოვაჩინოთ კონტეინერი (რომელიც XML-ში GONE უნდა იყოს)
+        //  გამოვაჩინოთ კონტეინერი (რომელიც XML-ში GONE უნდა იყოს)
         binding.fragmentContainer.visibility = View.VISIBLE
 
         val bundle = Bundle().apply {
