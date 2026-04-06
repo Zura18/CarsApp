@@ -89,7 +89,7 @@ class Payment : Fragment() {
      *  ახალ Fragment-ზე გადასვლა
      */
     private fun openSuccessFragment() {
-        val fragment = SuccessFragment() // შექმენი ეს Fragment
+        val fragment = Payment() // შექმენი ეს Fragment
 
         parentFragmentManager.beginTransaction()
             .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
