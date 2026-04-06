@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         // პირველი Fragment ჩაიტვირთოს
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, HomeFragment())
+                .replace(R.id.fragment_container, Home())
                 .commit()
         }
 

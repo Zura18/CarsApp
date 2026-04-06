@@ -1,5 +1,6 @@
 package com.example.carsapp
 
+import SuccessFragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -89,7 +90,7 @@ class Payment : Fragment() {
      *  ახალ Fragment-ზე გადასვლა
      */
     private fun openSuccessFragment() {
-        val fragment = Payment() // შექმენი ეს Fragment
+        val fragment = SuccessFragment() // შექმენი ეს Fragment
 
         parentFragmentManager.beginTransaction()
             .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
